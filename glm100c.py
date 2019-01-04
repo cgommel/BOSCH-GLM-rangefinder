@@ -62,15 +62,15 @@ class GLM100C(object):
             #print('Connecting to BOSCH GLM100C failed')
 
     def find_GLM100C(self):
-        print('Searching for BOSCH GLM100C ...')
+        print('Searching for BOSCH GLMxxC ...')
 
         nearby_devices = bluetooth.discover_devices(duration=8, lookup_names=True, flush_cache=True, lookup_class=False)
 
         for index, val in enumerate(nearby_devices):
             addr, name = val
-            if 'BOSCH GLM100C' in name.upper():
+            if 'BOSCH GLM' in name.upper():
                 self.bluetooth_address = addr
-                print('Found BOSCH GLM100C @', self.bluetooth_address)
+                print('Found ', name.upper() ,' @', self.bluetooth_address)
                 return
 
     def measure(self):
